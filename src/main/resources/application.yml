@@ -1,0 +1,42 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+logging:
+  file:
+    name: ${java.io.tmpdir}/application.log
+  level:
+    com:
+      backend: DEBUG
+    org:
+      springframework: DEBUG
+      springframework.web: DEBUG
+spring:
+  application:
+    name: poc
+  profiles:
+    active: dev
+#  data:
+#    web:
+#      pageable:
+#        one-indexed-parameters: true # Fix pagination starting number to start from 1
+  jackson:
+    default-property-inclusion: non_null
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/poc
+    driverClassName: org.postgresql.Driver
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql
+  sql:
+    init:
+      platform: org.hibernate.dialect.PostgreSQL95Dialect
+info:
+  build:
+    version: 1.0
