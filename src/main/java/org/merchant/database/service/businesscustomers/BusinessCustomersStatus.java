@@ -1,12 +1,12 @@
 package org.merchant.database.service.businesscustomers;
 
 public enum BusinessCustomersStatus {
-    ACTIVE("active"),
-    ONBOARDING("onboarding"),
-    NOT_VERIFIED("not_verified"),
-    VERIFIED("verified"),
-    SUSPENDED("suspended"),
-    INACTIVE("inactive");
+    A("active"),
+    O("onboarding"),
+    NV("not_verified"),
+    V("verified"),
+    S("suspended"),
+    I("inactive");
 
     private String status;
 
@@ -22,27 +22,27 @@ public enum BusinessCustomersStatus {
     public static BusinessCustomersStatus fromStatus(String status) {
         switch (status) {
             case "active": {
-                return ACTIVE;
+                return A;
             }
 
             case "onboarding": {
-                return ONBOARDING;
+                return O;
             }
 
             case "not_verified": {
-                return NOT_VERIFIED;
+                return NV;
             }
 
             case "verified": {
-                return VERIFIED;
+                return V;
             }
 
             case "suspended": {
-                return SUSPENDED;
+                return S;
             }
 
             case "inactive": {
-                return INACTIVE;
+                return I;
             }
 
             default: {
