@@ -13,10 +13,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.Predicate;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestService {
@@ -40,17 +38,16 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
                 predicates.add(cb.like(cb.lower(root.get("title")), "%" + params.getTitle().toLowerCase() + "%"));
             }
 
-            Optional<BusinessCustomersStatus> optStatus = EnumSet.allOf(BusinessCustomersStatus.class)
-                    .stream()
-                    .filter(e -> e.name().equals(params.getStatus()))
-                    .findAny();
+            final List<String> statuses = Optional.ofNullable(params.getStatus()).orElse(Collections.emptyList());
+            if (statuses != null && !statuses.isEmpty()){
+                List<BusinessCustomersStatus> statusesAsEnum = statuses.stream()
+                        .map(status -> BusinessCustomersStatus.fromStatus(status))
+                        .collect(Collectors.toList())
+                        ;
 
-            if(optStatus.isPresent()){
-                final List<BusinessCustomersStatus> statuses = params.getStatus();
-                if (statuses != null && !statuses.isEmpty()){
-                    predicates.add(root.get("status").in(statuses));
-                }
+                predicates.add(root.get("status").in(statusesAsEnum));
             }
+
             return cb.and(predicates.toArray(new Predicate[predicates.size()]));
         };
         return businessCustomersService.findAll(spec, pageable).map(businessCustomersMapper::toFullDTO);
@@ -75,7 +72,7 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
         if(byId.isPresent())
         {
             BusinessCustomers businessCustomers = byId.get();
-            businessCustomers.setStatus(BusinessCustomersStatus.valueOf(dto.getStatus().name()));
+            businessCustomers.setStatus(BusinessCustomersStatus.fromStatus(dto.getStatus()));
             businessCustomers.setDescription(dto.getDescription());
             businessCustomers.setCountry(dto.getCountry());
             businessCustomers.setAddress1(dto.getAddress1());
@@ -93,7 +90,7 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
     public BusinessCustomersFullDTO createBusinessCustomer(BusinessCustomersFullDTO dto)
     {
         BusinessCustomers businessCustomers = new BusinessCustomers();
-        businessCustomers.setStatus(BusinessCustomersStatus.valueOf(dto.getStatus().name()));
+        businessCustomers.setStatus(BusinessCustomersStatus.fromStatus(dto.getStatus()));
         businessCustomers.setDescription(dto.getDescription());
         businessCustomers.setCountry(dto.getCountry());
         businessCustomers.setAddress1(dto.getAddress1());

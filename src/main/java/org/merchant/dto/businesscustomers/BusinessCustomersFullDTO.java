@@ -15,25 +15,15 @@ public class BusinessCustomersFullDTO {
 
     private long id;
 
-    private long merchantId;
-
     private String name;
 
     private String businessType;
 
-    private BusinessCustomersStatus status;
+    private String status;
 
     private String description;
 
     private String country;
 
     private String address1;
-
-    private String address2;
-
-    private String address3;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 }

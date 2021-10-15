@@ -13,7 +13,7 @@ public class BusinessCustomersSearchParams {
 
     private String title;
 
-    private List<BusinessCustomersStatus> status;
+    private List<String> status;
 
     private LocalDateTime createdAt;
 

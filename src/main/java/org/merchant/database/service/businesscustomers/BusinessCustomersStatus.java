@@ -14,4 +14,42 @@ public enum BusinessCustomersStatus {
     {
         this.status = status;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public static BusinessCustomersStatus fromStatus(String status) {
+        switch (status) {
+            case "active": {
+                return ACTIVE;
+            }
+
+            case "onboarding": {
+                return ONBOARDING;
+            }
+
+            case "not_verified": {
+                return NOT_VERIFIED;
+            }
+
+            case "verified": {
+                return VERIFIED;
+            }
+
+            case "suspended": {
+                return SUSPENDED;
+            }
+
+            case "inactive": {
+                return INACTIVE;
+            }
+
+            default: {
+                throw new UnsupportedOperationException(
+                        String.format("Unkhown status: '%s'", status)
+                );
+            }
+        }
+    }
 }
