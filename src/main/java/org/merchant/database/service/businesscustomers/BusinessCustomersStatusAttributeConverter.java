@@ -12,7 +12,7 @@ public class BusinessCustomersStatusAttributeConverter
             return null;
         }
 
-        return value.getStatus();
+        return value.name();
     }
 
     public BusinessCustomersStatus convertToEntityAttribute( String value ) {
