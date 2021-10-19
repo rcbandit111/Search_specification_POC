@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: test-data-1
+      author: test
+      changes:
+        - sql:
+            dbms: postgresql
+            sql: INSERT INTO business_customers(type, status, description, country, address1) VALUES('MERCHANT', 'ACTIVE', 'description text', 'US', '5th Avenue, 1, New York');
