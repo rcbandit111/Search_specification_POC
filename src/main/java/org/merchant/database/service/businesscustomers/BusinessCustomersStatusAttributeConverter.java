@@ -20,7 +20,7 @@ public class BusinessCustomersStatusAttributeConverter
             return null;
         }
 
-        return BusinessCustomersStatus.fromStatus( value );
+        return BusinessCustomersStatus.valueOf( value );
     }
 
 }
