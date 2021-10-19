@@ -2,7 +2,6 @@ package org.merchant.dto.businesscustomers;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.merchant.database.service.businesscustomers.BusinessCustomersStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
