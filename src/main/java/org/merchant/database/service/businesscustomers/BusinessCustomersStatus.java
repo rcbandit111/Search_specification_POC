@@ -1,5 +1,8 @@
 package org.merchant.database.service.businesscustomers;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum BusinessCustomersStatus {
     A("active"),
     O("onboarding"),
@@ -15,10 +18,14 @@ public enum BusinessCustomersStatus {
         this.status = status;
     }
 
+    // Define the status field as the enum representation by using @JsonValue
+    @JsonValue
     public String getStatus() {
         return status;
     }
 
+    // Use the fromStatus method as @JsonCreator
+    @JsonCreator
     public static BusinessCustomersStatus fromStatus(String status) {
         switch (status) {
             case "active": {

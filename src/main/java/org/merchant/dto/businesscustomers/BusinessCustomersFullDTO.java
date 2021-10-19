@@ -19,7 +19,7 @@ public class BusinessCustomersFullDTO {
 
     private String businessType;
 
-    private String status;
+    private BusinessCustomersStatus status;
 
     private String description;
 
