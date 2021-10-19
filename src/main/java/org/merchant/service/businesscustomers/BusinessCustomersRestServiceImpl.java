@@ -35,7 +35,7 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
         Specification<BusinessCustomers> spec = (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
             if (params.getTitle() != null) {
-                predicates.add(cb.like(cb.lower(root.get("title")), "%" + params.getTitle().toLowerCase() + "%"));
+                predicates.add(cb.like(cb.lower(root.get("description")), "%" + params.getTitle().toLowerCase() + "%"));
             }
 
             final List<String> statuses = Optional.ofNullable(params.getStatus()).orElse(Collections.emptyList());
