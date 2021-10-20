@@ -5,4 +5,4 @@ databaseChangeLog:
       changes:
         - sql:
             dbms: postgresql
-            sql: INSERT INTO business_customers(type, status, description, country, address1) VALUES('MERCHANT', 'ACTIVE', 'description text', 'US', '5th Avenue, 1, New York');
+            sql: INSERT INTO business_customers(type, status, description, country, address1) VALUES('MERCHANT', 'A', 'description text', 'US', '5th Avenue, 1, New York');
