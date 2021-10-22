@@ -44,7 +44,15 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
 
             final List<String> statuses = Optional.ofNullable(params.getStatus()).orElse(Collections.emptyList());
             if (statuses != null && !statuses.isEmpty()){
+                EnumSet<BusinessCustomersStatus> businessCustomersStatusEnumSet = EnumSet.allOf(BusinessCustomersStatus.class);
+                
                 List<BusinessCustomersStatus> statusesAsEnum = statuses.stream()
+                        .filter(status -> businessCustomersStatusEnumSet
+                            .stream()
+                            .filter(e -> e.getStatus().equals(status))
+                            .findAny()
+                            .isPresent()
+                        )
                         .map(status -> BusinessCustomersStatus.fromStatus(status))
                         .collect(Collectors.toList())
                         ;
