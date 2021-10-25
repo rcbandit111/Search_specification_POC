@@ -26,37 +26,47 @@ public enum BusinessCustomersStatus {
 
     // Use the fromStatus method as @JsonCreator
     @JsonCreator
-    public static BusinessCustomersStatus fromStatus(String status) {
-        switch (status) {
-            case "active": {
-                return A;
-            }
+//    public static BusinessCustomersStatus fromStatus(String status) {
+//        switch (status) {
+//            case "active": {
+//                return A;
+//            }
+//
+//            case "onboarding": {
+//                return O;
+//            }
+//
+//            case "not_verified": {
+//                return NV;
+//            }
+//
+//            case "verified": {
+//                return V;
+//            }
+//
+//            case "suspended": {
+//                return S;
+//            }
+//
+//            case "inactive": {
+//                return I;
+//            }
+//
+//            default: {
+//                throw new UnsupportedOperationException(
+//                        String.format("Unkhown status: '%s'", status)
+//                );
+//            }
+//        }
+//    }
 
-            case "onboarding": {
-                return O;
-            }
-
-            case "not_verified": {
-                return NV;
-            }
-
-            case "verified": {
-                return V;
-            }
-
-            case "suspended": {
-                return S;
-            }
-
-            case "inactive": {
-                return I;
-            }
-
-            default: {
-                throw new UnsupportedOperationException(
-                        String.format("Unkhown status: '%s'", status)
-                );
+    public static BusinessCustomersStatus fromStatus(String statusText) {
+        for (BusinessCustomersStatus status : values()) {
+            if (status.getStatus().equalsIgnoreCase(statusText)) {
+                return status;
             }
         }
+
+        throw new UnsupportedOperationException(String.format("Unknown status: '%s'", statusText));
     }
 }

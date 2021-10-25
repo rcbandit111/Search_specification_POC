@@ -40,7 +40,6 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     // Swagger
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
-    implementation 'org.liquibase:liquibase-core'
 }
 
 dependencyManagement {

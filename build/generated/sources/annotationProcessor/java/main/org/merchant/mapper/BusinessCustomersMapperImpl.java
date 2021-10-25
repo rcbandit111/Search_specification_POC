@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-10-15T12:19:24+0300",
+    date = "2021-10-25T13:50:32+0300",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.2.jar, environment: Java 17 (Oracle Corporation)"
 )
 @Component
@@ -25,9 +25,7 @@ public class BusinessCustomersMapperImpl implements BusinessCustomersMapper {
         if ( businessCustomers.getId() != null ) {
             businessCustomersFullDTO.id( businessCustomers.getId() );
         }
-        if ( businessCustomers.getStatus() != null ) {
-            businessCustomersFullDTO.status( businessCustomers.getStatus().name() );
-        }
+        businessCustomersFullDTO.status( businessCustomers.getStatus() );
         businessCustomersFullDTO.description( businessCustomers.getDescription() );
         businessCustomersFullDTO.country( businessCustomers.getCountry() );
         businessCustomersFullDTO.address1( businessCustomers.getAddress1() );
