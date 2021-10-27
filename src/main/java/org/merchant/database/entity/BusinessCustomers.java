@@ -2,7 +2,6 @@ package org.merchant.database.entity;
 
 import lombok.*;
 import org.merchant.database.service.businesscustomers.BusinessCustomersStatus;
-import org.merchant.database.service.businesscustomers.BusinessCustomersStatusAttributeConverter;
 import org.merchant.database.service.businesscustomers.BusinessCustomersType;
 
 import javax.persistence.*;
@@ -25,7 +24,8 @@ public class BusinessCustomers {
     @Column(name = "type", length = 100)
     private BusinessCustomersType type;
 
-    @Convert( converter = BusinessCustomersStatusAttributeConverter.class )
+    //Convert( converter = BusinessCustomersStatusAttributeConverter.class )
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 20)
     private BusinessCustomersStatus status;
 

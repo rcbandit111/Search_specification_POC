@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1466006862728-4
+      author: test (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: business_customers_pkey
+                  name: id
+                  type: bigint
+              - column:
+                  name: type
+                  type: VARCHAR(100)
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+              - column:
+                  name: description
+                  type: VARCHAR(100)
+              - column:
+                  name: country
+                  type: VARCHAR(100)
+              - column:
+                  name: address1
+                  type: VARCHAR(200)
+            tableName: business_customers
