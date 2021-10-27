@@ -49,7 +49,7 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
                 List<BusinessCustomersStatus> statusesAsEnum = statuses.stream()
                         .filter(status -> businessCustomersStatusEnumSet
                             .stream()
-                            .filter(e -> e.getStatus().equals(status))
+                            .filter(e -> e.getShortName().equals(status))
                             .findAny()
                             .isPresent()
                         )

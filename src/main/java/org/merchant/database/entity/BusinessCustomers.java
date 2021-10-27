@@ -24,7 +24,6 @@ public class BusinessCustomers {
     @Column(name = "type", length = 100)
     private BusinessCustomersType type;
 
-    //Convert( converter = BusinessCustomersStatusAttributeConverter.class )
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 20)
     private BusinessCustomersStatus status;
