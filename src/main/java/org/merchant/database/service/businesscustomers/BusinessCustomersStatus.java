@@ -4,65 +4,38 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum BusinessCustomersStatus {
-    A("active"),
-    O("onboarding"),
-    NV("not_verified"),
-    V("verified"),
-    S("suspended"),
-    I("inactive");
+    A("active", "Active"),
+    O("onboarding", "Onboarding"),
+    NV("not_verified", "Not Verified"),
+    V("verified", "Verified"),
+    S("suspended", "Suspended"),
+    I("inactive", "Inactive");
 
-    private String status;
+    private String shortName;
 
-    BusinessCustomersStatus(String status)
-    {
-        this.status = status;
+    private String fullName;
+
+    BusinessCustomersStatus(String shortName, String fullName) {
+        this.shortName = shortName;
+        this.fullName = fullName;
     }
 
     // Define the status field as the enum representation by using @JsonValue
     @JsonValue
-    public String getStatus() {
-        return status;
+    public String getShortName() {
+        return shortName;
+    }
+
+    @JsonValue
+    public String getFullName() {
+        return fullName;
     }
 
     // Use the fromStatus method as @JsonCreator
     @JsonCreator
-//    public static BusinessCustomersStatus fromStatus(String status) {
-//        switch (status) {
-//            case "active": {
-//                return A;
-//            }
-//
-//            case "onboarding": {
-//                return O;
-//            }
-//
-//            case "not_verified": {
-//                return NV;
-//            }
-//
-//            case "verified": {
-//                return V;
-//            }
-//
-//            case "suspended": {
-//                return S;
-//            }
-//
-//            case "inactive": {
-//                return I;
-//            }
-//
-//            default: {
-//                throw new UnsupportedOperationException(
-//                        String.format("Unkhown status: '%s'", status)
-//                );
-//            }
-//        }
-//    }
-
     public static BusinessCustomersStatus fromStatus(String statusText) {
         for (BusinessCustomersStatus status : values()) {
-            if (status.getStatus().equalsIgnoreCase(statusText)) {
+            if (status.getShortName().equalsIgnoreCase(statusText)) {
                 return status;
             }
         }
