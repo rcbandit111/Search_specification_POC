@@ -2,6 +2,7 @@ package org.merchant.database.service.businesscustomers;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Getter;
 
 public enum BusinessCustomersStatus {
     A("active", "Active"),
@@ -11,24 +12,16 @@ public enum BusinessCustomersStatus {
     S("suspended", "Suspended"),
     I("inactive", "Inactive");
 
+    @Getter
     private String shortName;
 
+    @JsonValue
+    @Getter
     private String fullName;
 
     BusinessCustomersStatus(String shortName, String fullName) {
         this.shortName = shortName;
         this.fullName = fullName;
-    }
-
-    // Define the status field as the enum representation by using @JsonValue
-    @JsonValue
-    public String getShortName() {
-        return shortName;
-    }
-
-    @JsonValue
-    public String getFullName() {
-        return fullName;
     }
 
     // Use the fromStatus method as @JsonCreator
