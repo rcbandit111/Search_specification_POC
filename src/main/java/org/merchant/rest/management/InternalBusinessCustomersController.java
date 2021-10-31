@@ -55,6 +55,7 @@ public class InternalBusinessCustomersController {
     public ResponseEntity<?> listBusinessCustomers(@Valid BusinessCustomersSearchParams params, Pageable pageable)
     {
         Page<BusinessCustomersDTO> businessCustomersList = businessCustomersRestService.findBusinessCustomers(params, pageable);
+        businessCustomersList.forEach(businessCustomersDTO -> businessCustomersDTO.getStatus().setUseShortFormat(false));
         return new ResponseEntity<>(businessCustomersList, HttpStatus.OK);
     }
 
