@@ -3,6 +3,7 @@ package org.merchant.service.businesscustomers;
 import org.merchant.database.entity.BusinessCustomers;
 import org.merchant.database.service.businesscustomers.BusinessCustomersService;
 import org.merchant.database.service.businesscustomers.BusinessCustomersStatus;
+import org.merchant.dto.businesscustomers.BusinessCustomersDTO;
 import org.merchant.dto.businesscustomers.BusinessCustomersFullDTO;
 import org.merchant.dto.businesscustomers.BusinessCustomersSearchParams;
 import org.merchant.mapper.BusinessCustomersMapper;
@@ -34,7 +35,7 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
     }
 
     @Override
-    public Page<BusinessCustomersFullDTO> findBusinessCustomers(BusinessCustomersSearchParams params, Pageable pageable)
+    public Page<BusinessCustomersDTO> findBusinessCustomers(BusinessCustomersSearchParams params, Pageable pageable)
     {
         Specification<BusinessCustomers> spec = (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
@@ -62,7 +63,7 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
 
             return cb.and(predicates.toArray(new Predicate[predicates.size()]));
         };
-        return businessCustomersService.findAll(spec, pageable).map(businessCustomersMapper::toFullDTO);
+        return businessCustomersService.findAll(spec, pageable).map(businessCustomersMapper::toDTO);
     }
 
     @Override

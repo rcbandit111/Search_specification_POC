@@ -1,5 +1,6 @@
 package org.merchant.rest.management;
 
+import org.merchant.dto.businesscustomers.BusinessCustomersDTO;
 import org.merchant.dto.businesscustomers.BusinessCustomersDeleteDto;
 import org.merchant.dto.businesscustomers.BusinessCustomersFullDTO;
 import org.merchant.dto.businesscustomers.BusinessCustomersSearchParams;
@@ -43,6 +44,7 @@ public class InternalBusinessCustomersController {
         return new ResponseEntity<>(businessCustomer, HttpStatus.OK);
     }
 
+    // This endpoint should return BusinessCustomersDTO - with fullName value for status - "Active"
     /**
      * List Business Customers
      * @param params
@@ -52,10 +54,11 @@ public class InternalBusinessCustomersController {
     @RequestMapping(method = RequestMethod.GET, value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> listBusinessCustomers(@Valid BusinessCustomersSearchParams params, Pageable pageable)
     {
-        Page<BusinessCustomersFullDTO> businessCustomersList = businessCustomersRestService.findBusinessCustomers(params, pageable);
+        Page<BusinessCustomersDTO> businessCustomersList = businessCustomersRestService.findBusinessCustomers(params, pageable);
         return new ResponseEntity<>(businessCustomersList, HttpStatus.OK);
     }
 
+    // This endpoint should return BusinessCustomersFullDTO - with shortName value for status - "active"
     /**
      * Get single Business Customers
      * @return
