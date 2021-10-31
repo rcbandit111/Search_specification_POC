@@ -69,6 +69,7 @@ public class InternalBusinessCustomersController {
         Optional<BusinessCustomersFullDTO> businessCustomer = businessCustomersRestService.findBusinessCustomer(id);
         if(businessCustomer.isPresent())
         {
+            businessCustomer.get().getStatus().setUseShortFormat(true);
             return new ResponseEntity<>(businessCustomer, HttpStatus.OK);
         }
         return ResponseEntity.noContent().build();

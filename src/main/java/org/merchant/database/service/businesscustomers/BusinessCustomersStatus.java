@@ -3,6 +3,7 @@ package org.merchant.database.service.businesscustomers;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
+import lombok.Setter;
 
 public enum BusinessCustomersStatus {
     A("active", "Active"),
@@ -15,9 +16,17 @@ public enum BusinessCustomersStatus {
     @Getter
     private String shortName;
 
-    @JsonValue
     @Getter
     private String fullName;
+
+    @Setter
+    private boolean useShortFormat;
+
+    @JsonValue
+    public String getJsonValue() {
+        if(useShortFormat) return shortName;
+        return fullName;
+    }
 
     BusinessCustomersStatus(String shortName, String fullName) {
         this.shortName = shortName;
