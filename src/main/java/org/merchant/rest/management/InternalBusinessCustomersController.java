@@ -41,6 +41,8 @@ public class InternalBusinessCustomersController {
     public ResponseEntity<?> create(@RequestBody BusinessCustomersFullDTO businessCustomersFullDTO)
     {
         BusinessCustomersFullDTO businessCustomer = businessCustomersRestService.createBusinessCustomer(businessCustomersFullDTO);
+        businessCustomer.getStatus().setUseShortFormat(true);
+        businessCustomer.getType().setUseShortFormat(true);
         return new ResponseEntity<>(businessCustomer, HttpStatus.OK);
     }
 
@@ -56,6 +58,7 @@ public class InternalBusinessCustomersController {
     {
         Page<BusinessCustomersDTO> businessCustomersList = businessCustomersRestService.findBusinessCustomers(params, pageable);
         businessCustomersList.forEach(businessCustomersDTO -> businessCustomersDTO.getStatus().setUseShortFormat(false));
+        businessCustomersList.forEach(businessCustomersDTO -> businessCustomersDTO.getType().setUseShortFormat(false));
         return new ResponseEntity<>(businessCustomersList, HttpStatus.OK);
     }
 
@@ -70,6 +73,7 @@ public class InternalBusinessCustomersController {
         Optional<BusinessCustomersFullDTO> businessCustomer = businessCustomersRestService.findBusinessCustomer(id);
         if(businessCustomer.isPresent())
         {
+            businessCustomer.get().getType().setUseShortFormat(true);
             businessCustomer.get().getStatus().setUseShortFormat(true);
             return new ResponseEntity<>(businessCustomer, HttpStatus.OK);
         }
@@ -86,6 +90,8 @@ public class InternalBusinessCustomersController {
         Optional<BusinessCustomersFullDTO> businessCustomer = businessCustomersRestService.updateBusinessCustomer(id, businessCustomersFullDTO);
         if(businessCustomer.isPresent())
         {
+            businessCustomer.get().getType().setUseShortFormat(true);
+            businessCustomer.get().getStatus().setUseShortFormat(true);
             return new ResponseEntity<>(businessCustomer, HttpStatus.OK);
         }
         return ResponseEntity.notFound().build();
