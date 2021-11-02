@@ -27,8 +27,8 @@ spring:
   datasource:
     url: jdbc:postgresql://185.185.126.15:5432/merchant_hub
     driverClassName: org.postgresql.Driver
-    username: root
-    password: 6y5t4r3e2w1q
+    username: admin
+    password: 6y5t4r3e2w1q!Q
   jpa:
     hibernate:
       ddl-auto: update

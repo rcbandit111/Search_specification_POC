@@ -2,9 +2,7 @@ package org.merchant.dto.businesscustomers;
 
 import lombok.*;
 import org.merchant.database.service.businesscustomers.BusinessCustomersStatus;
-
-import java.time.LocalDateTime;
-import java.util.List;
+import org.merchant.database.service.businesscustomers.BusinessCustomersType;
 
 @Getter
 @Setter
@@ -17,7 +15,7 @@ public class BusinessCustomersFullDTO {
 
     private String name;
 
-    private String businessType;
+    private BusinessCustomersType type;
 
     private BusinessCustomersStatus status;
 

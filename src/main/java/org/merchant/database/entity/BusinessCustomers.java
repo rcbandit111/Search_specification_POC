@@ -21,11 +21,11 @@ public class BusinessCustomers {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type", length = 100)
+    @Column(name = "type", nullable = false, length = 100)
     private BusinessCustomersType type;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", length = 20)
+    @Column(name = "status", nullable = false, length = 20)
     private BusinessCustomersStatus status;
 
     @Column(name = "description", length = 100)

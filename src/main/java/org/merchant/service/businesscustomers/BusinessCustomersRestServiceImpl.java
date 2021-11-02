@@ -85,6 +85,7 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
         if(byId.isPresent())
         {
             BusinessCustomers businessCustomers = byId.get();
+            businessCustomers.setType(dto.getType());
             businessCustomers.setStatus(dto.getStatus());
             businessCustomers.setDescription(dto.getDescription());
             businessCustomers.setCountry(dto.getCountry());

@@ -2,6 +2,7 @@ package org.merchant.dto.businesscustomers;
 
 import lombok.*;
 import org.merchant.database.service.businesscustomers.BusinessCustomersStatus;
+import org.merchant.database.service.businesscustomers.BusinessCustomersType;
 
 @Getter
 @Setter
@@ -14,7 +15,7 @@ public class BusinessCustomersDTO {
 
     private String name;
 
-    private String businessType;
+    private BusinessCustomersType type;
 
     private BusinessCustomersStatus status;
 

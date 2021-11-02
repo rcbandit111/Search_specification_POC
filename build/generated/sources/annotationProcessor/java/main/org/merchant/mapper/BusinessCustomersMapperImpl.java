@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-10-31T15:56:16+0200",
+    date = "2021-11-02T23:05:48+0200",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.2.jar, environment: Java 17 (Oracle Corporation)"
 )
 @Component
@@ -27,6 +27,7 @@ public class BusinessCustomersMapperImpl implements BusinessCustomersMapper {
         if ( businessCustomers.getId() != null ) {
             businessCustomersFullDTO.id( businessCustomers.getId() );
         }
+        businessCustomersFullDTO.type( businessCustomers.getType() );
         businessCustomersFullDTO.status( businessCustomers.getStatus() );
         businessCustomersFullDTO.description( businessCustomers.getDescription() );
         businessCustomersFullDTO.country( businessCustomers.getCountry() );
@@ -46,6 +47,7 @@ public class BusinessCustomersMapperImpl implements BusinessCustomersMapper {
         if ( businessCustomers.getId() != null ) {
             businessCustomersDTO.id( businessCustomers.getId() );
         }
+        businessCustomersDTO.type( businessCustomers.getType() );
         businessCustomersDTO.status( businessCustomers.getStatus() );
         businessCustomersDTO.description( businessCustomers.getDescription() );
         businessCustomersDTO.country( businessCustomers.getCountry() );
