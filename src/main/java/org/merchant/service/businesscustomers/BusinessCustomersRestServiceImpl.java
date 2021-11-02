@@ -104,6 +104,7 @@ public class BusinessCustomersRestServiceImpl implements BusinessCustomersRestSe
     public BusinessCustomersFullDTO createBusinessCustomer(BusinessCustomersFullDTO dto)
     {
         BusinessCustomers businessCustomers = new BusinessCustomers();
+        businessCustomers.setType(dto.getType());
         businessCustomers.setStatus(dto.getStatus());
         businessCustomers.setDescription(dto.getDescription());
         businessCustomers.setCountry(dto.getCountry());
